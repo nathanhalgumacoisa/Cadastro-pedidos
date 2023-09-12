@@ -70,3 +70,11 @@ function mostrarPedido(){
     })
     document.getElementById("listaPedido").innerHTML = html;
 }
+function inputvazio(){
+    let cliente = document.getElementById("cliente").value;
+    let mesa = document.getElementById("mesa").value;
+    let descricao = document.getElementById("descricao").value;
+    if(cliente == "" || mesa == "" || descricao == ""){
+        return true
+    }
+}
