@@ -73,7 +73,7 @@ function mostrarPedido(){
             </div>
             <div id="btns">
             <button onclick="deletarPedido(${pedido.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
-            <button onclick="editarPedido(${pedido.id})"><i class="fa-solid fa-pen"></i></button>
+            <button onclick="atualizarPedido(${pedido.id})"><i class="fa-solid fa-pen"></i></button>
             </div>
         `
     })
@@ -101,4 +101,22 @@ function deletarPedido(id){
     pedidos.deletarPorId(id);
     mostrarPedido();
     document.getElementById("listaPedido").classList.add("hidden");
+}
+let aux = null
+function editarPedido(id){
+    let cliente = document.getElementById("cliente").value;
+    let mesa = document.getElementById("mesa").value;
+    let descricao = document.getElementById("descricao").value;
+
+  equipeService.atualizarPorId(aux, cliente, mesa, descricao);
+
+  listarEquipes();
+
+  document.getElementById("cadastrar").classList.remove("hidden");
+  document.getElementById("Editar").classList.add("hidden");
+
+  document.getElementById("listaPedido").classList.add("hidden");
+  limparInputs();
+
+  aux = null;
 }
