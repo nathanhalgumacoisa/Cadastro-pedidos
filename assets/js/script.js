@@ -14,7 +14,16 @@ class ListaPedido{
         this.pedidos = [];
     }
     adicionar(pedido){
-        this.pedidos.push(pedido);
+        if(inputvazio()){
+            mensagem("preencha todos os campos")
+            document.getElementById("msg").classList.remove("sucesso");
+            document.getElementById("msg").classList.add("erro");
+        }else{
+            mensagem("enviado com sucesso")
+            this.pedidos.push(pedido);
+            document.getElementById("msg").classList.remove("erro");
+            document.getElementById("msg").classList.add("sucesso");
+        }
     }
     listar(){
         return this.pedidos;
@@ -76,5 +85,14 @@ function inputvazio(){
     let descricao = document.getElementById("descricao").value;
     if(cliente == "" || mesa == "" || descricao == ""){
         return true
+    }else{
+        return false
     }
 }
+function mensagem(msg){
+    document.getElementById("msg").innerHTML = msg;
+    document.getElementById("msg").classList.remove("hidden");
+    setTimeout(function(){
+        document.getElementById("msg").classList.add("hidden");
+    }, 4000);
+} 
