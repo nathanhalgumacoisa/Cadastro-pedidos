@@ -37,6 +37,7 @@ function criarPedido(){
     let pedido = new Pedido(cliente, mesa, descricao);
     pedidos.adicionar(pedido);
     //console.log(pedidos)
+    limparInputs()
 }
 function limparInputs(){
     document.getElementById("cliente").value = ""
