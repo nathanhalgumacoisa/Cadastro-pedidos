@@ -72,12 +72,13 @@ function mostrarPedido(){
                 <p>Descrição ${pedido.descricao}</p>
             </div>
             <div id="btns">
-            <button onclick="deletarPedido"><i class="fa-sharp fa-solid fa-trash"></i></button>
-            <button onclick="editarPedido"><i class="fa-solid fa-pen"></i></button>
+            <button onclick="deletarPedido(${pedido.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
+            <button onclick="editarPedido(${pedido.id})"><i class="fa-solid fa-pen"></i></button>
             </div>
         `
     })
     document.getElementById("listaPedido").innerHTML = html;
+    document.getElementById("listaPedido").classList.remove("hidden");
 }
 function inputvazio(){
     let cliente = document.getElementById("cliente").value;
@@ -95,4 +96,9 @@ function mensagem(msg){
     setTimeout(function(){
         document.getElementById("msg").classList.add("hidden");
     }, 4000);
-} 
+}
+function deletarPedido(id){
+    pedidos.deletarPorId(id);
+    mostrarPedido();
+    document.getElementById("listaPedido").classList.add("hidden");
+}
