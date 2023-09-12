@@ -25,11 +25,14 @@ class ListaPedido{
     atualizarPorId(id, cliente, mesa, descricao){
         let pedido = this.listarPorId(id);
         pedido.cliente = cliente;
-        pedido.mesa = mesa
-        pedido.descricao = descricao
+        pedido.mesa = mesa;
+        pedido.descricao = descricao;
+        return pedido
     }
-    deletarPorId(){
-
+    deletarPorId(id){
+        return (this.pedidos = this.pedidos.filter(
+            (pedido) => pedido.id != id
+        ));
     }
 }
 const pedidos = new ListaPedido()
